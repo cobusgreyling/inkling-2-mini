@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 460" role="img" aria-labelledby="title desc">
+  <title id="title">Inkling 2 Mini looped transformer</title>
+  <desc id="desc">Twenty-four stored layers. The middle twelve run three times, for forty-eight layer visits per token.</desc>
+  <style>
+    .bg { fill: #0c0c0c; }
+    .panel { fill: #161616; stroke: #3a3428; }
+    .loop { fill: #1c170f; stroke: #d4af37; }
+    .text { fill: #f3efe4; font-family: Georgia, "Iowan Old Style", serif; }
+    .mono { fill: #d4af37; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+    .muted { fill: #a39886; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+    .line { stroke: #d4af37; fill: none; }
+    .dim { stroke: #6d6456; fill: none; }
+  </style>
+  <rect class="bg" width="980" height="460"/>
+  <text class="mono" x="40" y="42" font-size="13" letter-spacing="2">LOOPED TRANSFORMER</text>
+  <text class="text" x="40" y="78" font-size="28">24 stored layers, 48 visits</text>
+  <text class="muted" x="40" y="104" font-size="13">Layers 6–17 run three times on the same weights. Layers 0–5 and 18–23 run once.</text>
+
+  <rect class="panel" x="40" y="140" width="150" height="150" rx="8"/>
+  <text class="mono" x="58" y="172" font-size="12">PRELUDE</text>
+  <text class="text" x="58" y="206" font-size="22">0–5</text>
+  <text class="muted" x="58" y="232" font-size="13">once</text>
+  <text class="muted" x="58" y="258" font-size="12">global at 5</text>
+
+  <rect class="loop" x="250" y="124" width="430" height="182" rx="12"/>
+  <text class="mono" x="270" y="156" font-size="12">LOOP · 3 PASSES · GATE RANK 64</text>
+  <rect class="panel" x="274" y="176" width="170" height="96" rx="8"/>
+  <text class="text" x="292" y="214" font-size="22">6–11</text>
+  <text class="muted" x="292" y="240" font-size="12">global at 11</text>
+  <rect class="panel" x="470" y="176" width="170" height="96" rx="8"/>
+  <text class="text" x="488" y="214" font-size="22">12–17</text>
+  <text class="muted" x="488" y="240" font-size="12">global at 17</text>
+
+  <rect class="panel" x="740" y="140" width="200" height="150" rx="8"/>
+  <text class="mono" x="758" y="172" font-size="12">CODA</text>
+  <text class="text" x="758" y="206" font-size="22">18–23</text>
+  <text class="muted" x="758" y="232" font-size="13">once</text>
+  <text class="muted" x="758" y="258" font-size="12">global at 23</text>
+
+  <path class="dim" d="M190 215 H250" stroke-width="1.5"/>
+  <path class="dim" d="M680 215 H740" stroke-width="1.5"/>
+  <path class="line" d="M465 306 C465 348 360 348 360 306" stroke-width="1.6"/>
+  <text class="mono" x="360" y="368" font-size="12">message from the previous pass</text>
+
+  <text class="muted" x="40" y="420" font-size="13">8 of 128 experts · 0 shared · hidden 2304 · 24 query / 8 KV · window 1024 · text and image in</text>
+  <text class="muted" x="40" y="442" font-size="13">3.4B unique active parameters · 5.4B weight activations once the two extra passes are counted</text>
+</svg>

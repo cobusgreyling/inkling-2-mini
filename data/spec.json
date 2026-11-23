@@ -1,0 +1,49 @@
+{
+  "name": "Inkling 2 Mini",
+  "architecture": "looped transformer",
+  "released": "2026-11-20",
+  "license": "Apache-2.0",
+  "sources": {
+    "announcement": "https://thinkingmachines.ai/news/inkling-2-mini/",
+    "config": "https://huggingface.co/thinkingmachines/Inkling-2-Mini/raw/main/config.json",
+    "tinker_pricing": "https://tinker-docs.thinkingmachines.ai/tinker/models/models_and_pricing/",
+    "playground": "https://tinker.thinkingmachines.ai/playground"
+  },
+  "loop": {
+    "stored_layers": 24,
+    "core_start": 6,
+    "core_end": 18,
+    "num_passes": 3,
+    "gate_rank": 64,
+    "is_varloop": false,
+    "block_size": 6,
+    "visits": 48
+  },
+  "parameters": {
+    "total_billion": 26.4,
+    "unique_active_billion": 3.4,
+    "extra_billion_per_later_pass": 1.0,
+    "effective_active_billion": 5.4
+  },
+  "text": {
+    "hidden_size": 2304,
+    "num_attention_heads": 24,
+    "num_key_value_heads": 8,
+    "head_dim": 128,
+    "sliding_window": 1024,
+    "routed_experts": 128,
+    "experts_per_token": 8,
+    "shared_experts": 0,
+    "intermediate_size": 1152,
+    "route_scale": 8.0,
+    "vocab_size": 201024,
+    "unpadded_vocab_size": 200058,
+    "model_max_length": 1048576,
+    "full_attention_layers": [5, 11, 17, 23]
+  },
+  "compare_to": {
+    "name": "Qwen3.8-27B",
+    "hf": "Qwen/Qwen3.8-27B",
+    "why": "Same total-parameter class and the same Artificial Analysis Intelligence Index score in the Inkling 2 Mini launch table. Dense hybrid, so the architectures are the comparison."
+  }
+}

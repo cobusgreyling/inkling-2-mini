@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" role="img" aria-labelledby="t d">
+<title id="t">Inkling 2 Mini and Qwen3.8-27B</title>
+<desc id="d">Vendor launch-table scores. Gold is Inkling 2 Mini. Steel is Qwen3.8-27B.</desc>
+<rect width="960" height="560" fill="#070705"/>
+<text x="36" y="46" fill="#e2b657" font-family="ui-monospace,Menlo,monospace" font-size="13" letter-spacing="2">SIDE BY SIDE</text>
+<text x="36" y="82" fill="#f4efe4" font-family="Georgia,serif" font-size="32">Same index. Two architectures.</text>
+<text x="36" y="108" fill="#a39886" font-family="ui-monospace,Menlo,monospace" font-size="12">Launch table, 20 Nov 2026. Gold: Inkling 2 Mini. Steel: Qwen3.8-27B.</text>
+
+<rect x="700" y="28" width="14" height="14" fill="#e2b657"/>
+<text x="722" y="40" fill="#f4efe4" font-family="ui-monospace,Menlo,monospace" font-size="12">Inkling 2 Mini</text>
+<rect x="700" y="52" width="14" height="14" fill="#9eb0c2"/>
+<text x="722" y="64" fill="#f4efe4" font-family="ui-monospace,Menlo,monospace" font-size="12">Qwen3.8-27B</text>
+<text x="36" y="140" fill="#f4efe4" font-family="Georgia,serif" font-size="16">DeepSWE v1.1</text>
+<rect x="280" y="122" width="269.9" height="14" fill="#e2b657"/>
+<text x="557.9" y="134" fill="#e2b657" font-family="ui-monospace,Menlo,monospace" font-size="12">48.2</text>
+<rect x="280" y="142" width="236.3" height="14" fill="#9eb0c2"/>
+<text x="524.3" y="154" fill="#9eb0c2" font-family="ui-monospace,Menlo,monospace" font-size="12">42.2</text>
+<text x="36" y="198" fill="#f4efe4" font-family="Georgia,serif" font-size="16">SWE-bench Verified</text>
+<rect x="280" y="180" width="443.5" height="14" fill="#e2b657"/>
+<text x="731.5" y="192" fill="#e2b657" font-family="ui-monospace,Menlo,monospace" font-size="12">79.2</text>
+<rect x="280" y="200" width="435.7" height="14" fill="#9eb0c2"/>
+<text x="723.7" y="212" fill="#9eb0c2" font-family="ui-monospace,Menlo,monospace" font-size="12">77.8</text>
+<text x="36" y="256" fill="#f4efe4" font-family="Georgia,serif" font-size="16">Terminal Bench 2.1</text>
+<rect x="280" y="238" width="401.0" height="14" fill="#e2b657"/>
+<text x="689.0" y="250" fill="#e2b657" font-family="ui-monospace,Menlo,monospace" font-size="12">71.6</text>
+<rect x="280" y="258" width="408.8" height="14" fill="#9eb0c2"/>
+<text x="696.8" y="270" fill="#9eb0c2" font-family="ui-monospace,Menlo,monospace" font-size="12">73.0</text>
+<text x="36" y="314" fill="#f4efe4" font-family="Georgia,serif" font-size="16">BrowseComp</text>
+<rect x="280" y="296" width="442.4" height="14" fill="#e2b657"/>
+<text x="730.4" y="308" fill="#e2b657" font-family="ui-monospace,Menlo,monospace" font-size="12">79.0</text>
+<rect x="280" y="316" width="345.0" height="14" fill="#9eb0c2"/>
+<text x="633.0" y="328" fill="#9eb0c2" font-family="ui-monospace,Menlo,monospace" font-size="12">61.6</text>
+<text x="36" y="372" fill="#f4efe4" font-family="Georgia,serif" font-size="16">MCP Atlas</text>
+<rect x="280" y="354" width="463.1" height="14" fill="#e2b657"/>
+<text x="751.1" y="366" fill="#e2b657" font-family="ui-monospace,Menlo,monospace" font-size="12">82.7</text>
+<rect x="280" y="374" width="432.9" height="14" fill="#9eb0c2"/>
+<text x="720.9" y="386" fill="#9eb0c2" font-family="ui-monospace,Menlo,monospace" font-size="12">77.3</text>
+<text x="36" y="430" fill="#f4efe4" font-family="Georgia,serif" font-size="16">LongBench v2</text>
+<rect x="280" y="412" width="374.6" height="14" fill="#e2b657"/>
+<text x="662.6" y="424" fill="#e2b657" font-family="ui-monospace,Menlo,monospace" font-size="12">66.9</text>
+<rect x="280" y="432" width="292.9" height="14" fill="#9eb0c2"/>
+<text x="580.9" y="444" fill="#9eb0c2" font-family="ui-monospace,Menlo,monospace" font-size="12">52.3</text>
+<text x="36" y="488" fill="#f4efe4" font-family="Georgia,serif" font-size="16">Non-hallucination</text>
+<rect x="280" y="470" width="355.0" height="14" fill="#e2b657"/>
+<text x="643.0" y="482" fill="#e2b657" font-family="ui-monospace,Menlo,monospace" font-size="12">63.4</text>
+<rect x="280" y="490" width="399.8" height="14" fill="#9eb0c2"/>
+<text x="687.8" y="502" fill="#9eb0c2" font-family="ui-monospace,Menlo,monospace" font-size="12">71.4</text>
+<text x="36" y="540" fill="#6d6456" font-family="ui-monospace,Menlo,monospace" font-size="11">Percent. Harnesses differ by row. These are the lab's numbers, not an independent re-run.</text>
+</svg>

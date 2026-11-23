@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inkling 2 Mini — a looped transformer</title>
+  <meta name="description" content="Reference for Inkling 2 Mini, the looped transformer on the Tinker playground, beside Qwen3.8-27B.">
+  <link rel="icon" href="../assets/mark.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,640&family=Outfit:wght@340;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070705;
+      --ink: #f4efe4;
+      --muted: #a39886;
+      --gold: #e2b657;
+      --copper: #d4784a;
+      --steel: #9eb0c2;
+      --line: #2c2822;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Outfit, "Avenir Next", sans-serif;
+      font-weight: 340;
+      line-height: 1.5;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: var(--gold); }
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: end;
+      background:
+        linear-gradient(to top, #070705 0%, rgba(7,7,5,.2) 42%, rgba(7,7,5,.45) 100%),
+        url("../assets/loop.jpg") center/cover no-repeat;
+    }
+    .hero-inner, .wrap { width: min(1080px, calc(100% - 48px)); margin: 0 auto; }
+    .hero-inner { padding: 0 0 72px; }
+    .kicker {
+      font-size: 12px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    h1 {
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 560;
+      font-size: clamp(56px, 9vw, 104px);
+      line-height: .9;
+      margin: 12px 0 16px;
+      letter-spacing: -0.03em;
+    }
+    .lede { max-width: 38rem; font-size: 20px; color: var(--ink); }
+    .hero-meta { display: flex; gap: 28px; margin-top: 28px; color: var(--muted); font-size: 13px; letter-spacing: .04em; }
+    section { padding: 88px 0; }
+    h2 {
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 560;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1;
+      margin: 0 0 16px;
+      letter-spacing: -0.03em;
+    }
+    .sub { color: var(--muted); max-width: 40rem; }
+    .stage {
+      margin-top: 48px;
+      padding: 36px 28px 28px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(ellipse at center, rgba(226,182,87,.08), transparent 60%),
+        #0c0c0a;
+    }
+    .rail {
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      gap: 6px;
+      height: 220px;
+    }
+    .slab {
+      width: 16px;
+      height: 120px;
+      background: #2a261f;
+      border-radius: 2px 2px 0 0;
+    }
+    .slab.global { height: 168px; }
+    .slab.prelude { animation: prelude 6s infinite; }
+    .slab.core { animation: core 6s infinite; }
+    .slab.coda { animation: coda 6s infinite; }
+    @keyframes prelude {
+      0%, 6% { background: #2a261f; box-shadow: none; }
+      10%, 18% { background: var(--gold); box-shadow: 0 0 22px var(--gold); }
+      26%, 100% { background: #241f18; box-shadow: none; }
+    }
+    @keyframes core {
+      0%, 22% { background: #2a261f; box-shadow: none; }
+      26%, 36% { background: #8d6a2c; box-shadow: 0 0 12px rgba(226,182,87,.7); }
+      40%, 46% { background: #2a261f; box-shadow: none; }
+      50%, 62% { background: #d4a24a; box-shadow: 0 0 16px var(--gold); }
+      66%, 72% { background: #2a261f; box-shadow: none; }
+      76%, 88% { background: var(--gold); box-shadow: 0 0 26px var(--gold); }
+      94%, 100% { background: #2a261f; box-shadow: none; }
+    }
+    @keyframes coda {
+      0%, 86% { background: #2a261f; box-shadow: none; }
+      90%, 97% { background: #f4efe4; box-shadow: 0 0 18px #f4efe4; }
+      100% { background: #2a261f; box-shadow: none; }
+    }
+    .pass {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 22px;
+      font-size: 13px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .groups { display: grid; grid-template-columns: 1fr 2fr 1fr; color: var(--muted); font-size: 12px; letter-spacing: .08em; margin-top: 8px; }
+    .groups span:nth-child(2) { text-align: center; }
+    .groups span:nth-child(3) { text-align: right; }
+    .split { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+    .split img, .frame img { width: 100%; height: auto; }
+    .frame { border: 1px solid var(--line); }
+    figure { margin: 0; }
+    figcaption { color: var(--muted); font-size: 13px; margin-top: 10px; }
+    .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 28px; margin-top: 28px; }
+    .facts div { border-top: 1px solid var(--line); padding-top: 10px; }
+    .facts b { display: block; font-family: Fraunces, Georgia, serif; font-size: 28px; font-weight: 560; }
+    .facts span { color: var(--muted); font-size: 13px; }
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 36px; }
+    .card { border: 1px solid var(--line); padding: 22px; background: #0c0c0a; }
+    .card h3 { font-family: Fraunces, Georgia, serif; font-size: 28px; margin: 8px 0 12px; }
+    .card.gold { box-shadow: inset 0 0 0 1px rgba(226,182,87,.35); }
+    table { width: 100%; border-collapse: collapse; margin-top: 28px; font-size: 15px; }
+    th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: var(--muted); font-weight: 500; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+    td.num { font-variant-numeric: tabular-nums; }
+    .chart { margin-top: 18px; }
+    footer { padding: 48px 0 72px; color: var(--muted); font-size: 13px; }
+    @media (max-width: 800px) {
+      .split, .pair, .facts, .hero-meta { grid-template-columns: 1fr; display: grid; }
+      .hero-meta { gap: 8px; }
+      .slab { width: 8px; }
+      .rail { gap: 3px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="kicker">Looped transformer · Tinker playground</div>
+      <h1>Inkling 2 Mini</h1>
+      <p class="lede">Twenty-four layers are stored. The middle twelve run three times. Every token takes forty-eight steps through one set of weights.</p>
+      <div class="hero-meta">
+        <span>26.4B total</span>
+        <span>3.4B active · 5.4B with the loop</span>
+        <span>Released 20 Nov 2026</span>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <p class="kicker">The schedule</p>
+      <h2>The same core, three times.</h2>
+      <p class="sub">Prelude layers 0–5 fire once. Layers 6–17, the loop, fire three times on shared weights. The coda, layers 18–23, fires once. Taller slabs are the full-attention layers at 5, 11, 17, and 23.</p>
+      <div class="stage">
+        <div class="rail" id="rail" aria-hidden="true"></div>
+        <div class="groups"><span>0–5 once</span><span>6–17 × 3</span><span>18–23 once</span></div>
+        <div class="pass"><span id="phase">Prelude</span><span>48 visits</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <figure>
+        <div class="frame"><img src="../assets/message.jpg" alt="A second pass of light carrying a filament of the earlier pass through the same glass layers."></div>
+        <figcaption>Passes 2 and 3 read a message from the pass before. The gate rank in the checkpoint is 64.</figcaption>
+      </figure>
+      <div>
+        <p class="kicker">Attention residuals</p>
+        <h2>The next pass starts from the prelude, and hears the last one.</h2>
+        <p class="sub">There is no single residual stream. Each block of six layers keeps its own sum. A layer reads earlier blocks and learns the mix. The second and third trips through the core also take a message from the previous trip. The gate starts closed in training, then opens.</p>
+        <div class="facts">
+          <div><b>6–17</b><span>core_start to core_end</span></div>
+          <div><b>3</b><span>num_passes, fixed</span></div>
+          <div><b>64</b><span>gate_rank</span></div>
+          <div><b>false</b><span>is_varloop</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="kicker">A comparable model</p>
+      <h2>Qwen3.8-27B, beside it.</h2>
+      <p class="sub">Same total-parameter class. The same 20.1 on the Artificial Analysis index in the launch table. One model is a looped mixture-of-experts. The other is a dense hybrid: 48 linear-attention layers and 16 full-attention layers, every weight active.</p>
+      <figure style="margin-top:28px">
+        <div class="frame"><img src="../assets/two-machines.jpg" alt="A compact ring of gold glass beside a long colonnade of silver blocks."></div>
+        <figcaption>Left, reuse. Right, a longer stack that runs once.</figcaption>
+      </figure>
+      <div class="pair">
+        <article class="card gold">
+          <p class="kicker">Inkling 2 Mini</p>
+          <h3>Looped MoE</h3>
+          <p>24 stored layers, 48 visits. 8 of 128 experts. Hidden size 2,304. Text and image. Context in the config: 1,048,576. About 20GB on disk.</p>
+        </article>
+        <article class="card">
+          <p class="kicker">Qwen3.8-27B</p>
+          <h3>Dense hybrid</h3>
+          <p>64 layers, all 27B active. Hidden size 5,120. Text, image, and video. Native context 262,144. A BF16 reference checkpoint.</p>
+        </article>
+      </div>
+      <img class="chart" src="../assets/comparison.svg" alt="Bar chart of launch-table scores for Inkling 2 Mini and Qwen3.8-27B.">
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="kicker">Playground</p>
+      <h2>Open the looped model.</h2>
+      <p class="sub"><a href="https://tinker.thinkingmachines.ai/playground">tinker.thinkingmachines.ai/playground</a></p>
+      <p>Playground model id:</p>
+      <p><code>tml-6MKyT15KbuUIcelkTPFNPzYbzl5RtVCSBam4XReulRqjl0D61xgQv2WUevvlUX4JAAAAA</code></p>
+      <p class="sub">That pin is a model id. This page does not contain an API key. On the API the model string is <code>thinkingmachines/Inkling-2-Mini</code>.</p>
+      <table>
+        <thead><tr><th>Id</th><th>Train</th><th>Sample</th></tr></thead>
+        <tbody>
+          <tr><td>thinkingmachines/Inkling-2-Mini</td><td class="num">64K</td><td class="num">1M</td></tr>
+          <tr><td>thinkingmachines/Inkling-2-Mini:peft:262144</td><td class="num">256K</td><td class="num">1M</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      Independent reference. Not affiliated with Thinking Machines Lab or Alibaba.
+      Scores in the chart are from the 20 November 2026 launch table.
+      Sources are in <a href="../docs/sources.md">docs/sources.md</a>.
+      The essay is <a href="../blog/the-loop-in-the-middle.md">the loop in the middle</a>.
+    </div>
+  </footer>
+  <script>
+    var rail = document.getElementById("rail");
+    for (var i = 0; i < 24; i++) {
+      var slab = document.createElement("div");
+      var kind = i < 6 ? "prelude" : (i < 18 ? "core" : "coda");
+      slab.className = "slab " + kind + (i % 6 === 5 ? " global" : "");
+      rail.appendChild(slab);
+    }
+    var phase = document.getElementById("phase");
+    var names = ["Prelude, once", "Core, pass 1", "Core, pass 2", "Core, pass 3", "Coda, once"];
+    function tick() {
+      var t = (performance.now() % 6000) / 6000;
+      var n = t < 0.22 ? 0 : t < 0.40 ? 1 : t < 0.66 ? 2 : t < 0.86 ? 3 : 4;
+      phase.textContent = names[n];
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  </script>
+</body>
+</html>
