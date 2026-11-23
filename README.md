@@ -1,5 +1,3 @@
-<img src="assets/mark.jpg" alt="Gold ring, the mark for the looped transformer" width="160">
-
 # Inkling 2 Mini
 
 A reference for the **looped transformer** on the [Tinker playground](https://tinker.thinkingmachines.ai/playground).
